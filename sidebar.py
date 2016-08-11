@@ -4,7 +4,7 @@ from wx.lib.pubsub import setupkwargs
 from wx.lib.pubsub import setuparg1
 from wx.lib.pubsub import pub
 
-LOCATIONS = ["USA","France","Germany","United Kingdom","Ukraine","Hong Kong"]
+LOCATIONS = ["France","Germany","United Kingdom","Ukraine","Hong Kong","USA"]
 
 class SidebarList(wx.ListCtrl):
     """ navigate different """

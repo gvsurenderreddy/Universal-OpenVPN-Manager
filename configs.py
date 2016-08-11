@@ -21,16 +21,15 @@ MA 02110-1301, USA.
 import wx
 from os import walk
 from base import BasePanel
+from wxsw.listctrl import CustomEditListCtrl
 
 CONFIGPATH = "c:/Program Files/OpenVPN/config/"
 
-class ConfigsList(wx.ListCtrl):
+class ConfigsList(CustomEditListCtrl):
 
     def __init__(self, parent):
-        wx.ListCtrl.__init__(
-                            self, 
-                            parent,
-                            style=wx.LC_REPORT|wx.LC_SINGLE_SEL)
+        CustomEditListCtrl.__init__(self, parent)
+                                                                      
         
         columns = ["Config",
                    "Path",
@@ -40,6 +39,8 @@ class ConfigsList(wx.ListCtrl):
                    
         for col in columns:         
             self.AppendColumn(col)
+        
+        self.SetupComboBox("Key", ["None", "Static Key", "PKI"], 0)
         
         self.RefreshConfigs()
         self.Bind(wx.EVT_LIST_ITEM_ACTIVATED, self.OnListItemActivated)
